@@ -14,7 +14,7 @@ flowchart LR
 
 | MVC part | Folder | Role in IMovies |
 |---|---|---|
-| **Model** | `server/models/` | Mongoose schemas: `User`, `Movie`, `Theater`, `Show`, `Booking` |
+| **Model** | `server/models/` | Mongoose schemas: `User`, `Movie`, `Show`, `Booking` |
 | **View** | JSON responses, rendered by `client/src/` | The API returns JSON, and React components present it |
 | **Controller** | `server/controllers/` | Business logic: `authController`, `movieController`, `showController`, `bookingController` |
 | Routes | `server/routes/` | Map URLs to controller functions and attach middleware |

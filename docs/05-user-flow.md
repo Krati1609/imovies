@@ -30,7 +30,6 @@ flowchart TD
 flowchart TD
     A([Admin login]) --> B[Admin dashboard]
     B --> C[Manage movies: add / edit / delete]
-    B --> D[Manage theaters]
-    B --> E[Schedule shows: movie, theater, time, price]
+    B --> E[Schedule shows: movie, theatre, time, price]
     B --> F[View all bookings]
 ```

@@ -4,7 +4,7 @@
 |---|---|---|---|
 | **Guest** | Visitor, not logged in | Browse movies, view details and showtimes, view seat availability | Book tickets, see bookings |
 | **User** | Registered customer | Everything a guest can, plus book seats, view own bookings, cancel own bookings | Manage movies/shows, see other users' bookings |
-| **Admin** | Cinema staff | Everything a user can, plus add/edit/delete movies, theaters and shows, view all bookings | N/A |
+| **Admin** | Cinema staff | Everything a user can, plus add/edit/delete movies and shows, view all bookings | N/A |
 
 ## Responsibilities by component
 
@@ -12,7 +12,7 @@
 |---|---|
 | React client | Render UI, hold the token, guard routes by role, call the API |
 | Express API | Validate input, enforce authentication and role checks, apply business rules |
-| MongoDB | Store users, movies, theaters, shows and bookings |
+| MongoDB | Store users, movies, shows and bookings |
 
 ## How roles are enforced
 

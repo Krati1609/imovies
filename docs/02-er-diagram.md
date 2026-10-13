@@ -1,19 +1,18 @@
 # ER Diagram
 
-MongoDB is document-based, but the data still has clear relationships. These are modelled with ObjectId references.
+MongoDB is document-based, but the data still has clear relationships. These are modelled with ObjectId references. There are four collections.
 
 ```mermaid
 erDiagram
     USER ||--o{ BOOKING : makes
     SHOW ||--o{ BOOKING : "is booked in"
     MOVIE ||--o{ SHOW : "is screened as"
-    THEATER ||--o{ SHOW : hosts
 
     USER {
         ObjectId _id PK
         string name
         string email UK
-        string password "bcrypt hash"
+        string password "bcrypt hash, never returned by default"
         string role "user | admin"
         date createdAt
     }
@@ -21,27 +20,24 @@ erDiagram
         ObjectId _id PK
         string title
         string description
-        string[] genre
+        string[] genres
         string language
-        number duration "minutes"
-        number rating
+        number durationMins
+        number rating "0 to 10"
+        string certificate
         string posterUrl
         date releaseDate
-    }
-    THEATER {
-        ObjectId _id PK
-        string name
-        string city
-        string address
+        string[] cast
     }
     SHOW {
         ObjectId _id PK
         ObjectId movie FK
-        ObjectId theater FK
+        string theatre
+        string city
         string screen
         date startTime
         number price
-        number rows
+        number rows "1 to 26, labelled A to Z"
         number seatsPerRow
         string[] bookedSeats "e.g. A1, B4"
     }
@@ -52,6 +48,7 @@ erDiagram
         string[] seats
         number totalAmount
         string status "confirmed | cancelled"
+        string reference UK "e.g. IMK3F9A2BC"
         date createdAt
     }
 ```
@@ -62,11 +59,11 @@ erDiagram
 |---|---|---|
 | User to Booking | one-to-many | A user can have many bookings |
 | Movie to Show | one-to-many | One movie has many showtimes |
-| Theater to Show | one-to-many | One theater hosts many shows |
 | Show to Booking | one-to-many | Many bookings share a show, each with different seats |
 
 ## Notes
 
 - `Show.bookedSeats` is the source of truth for availability. Cancelling a booking removes its seats from this array.
+- The theatre name, city and screen are stored directly on the `Show`. This keeps the project simple, since there is no theatre management screen to build. A separate `Theatre` collection would be a natural future extension.
 - `email` has a unique index, so duplicate accounts are rejected by the database too.
 - Seat labels are built from the grid: row letter plus seat number (A1, A2 ... B1 ...).

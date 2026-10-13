@@ -5,7 +5,7 @@
 - **Register and login** with email and password. Passwords are hashed with bcrypt and sessions use JWT.
 - **Browse movies** in a card grid, with search by title and filters for genre and language.
 - **Movie details** page with synopsis, duration, rating and upcoming showtimes.
-- **Select a showtime** by theater, date and time.
+- **Select a showtime** by theatre, date and time.
 - **Interactive seat map** with real-time availability. Booked seats are disabled and the selected seats are highlighted.
 - **Book tickets** with an instant confirmation and a total price.
 - **My bookings** page to view booking history.
@@ -14,7 +14,7 @@
 ## Admin features
 
 - **Manage movies**: add, edit and delete.
-- **Manage theaters and shows**: schedule showtimes with pricing and seat-grid size.
+- **Manage shows**: schedule showtimes with theatre, pricing and seat-grid size.
 - **View all bookings** across users.
 
 ## Platform features
@@ -35,9 +35,10 @@
 | GET | `/api/movies` | Public | List/search movies |
 | GET | `/api/movies/:id` | Public | Movie details |
 | POST/PUT/DELETE | `/api/movies[/:id]` | Admin | Manage movies |
-| GET | `/api/shows?movie=<id>` | Public | Showtimes for a movie |
+| GET | `/api/movies/:id/shows` | Public | Upcoming showtimes for a movie, with seats left |
 | GET | `/api/shows/:id` | Public | Show details and seat map |
 | POST | `/api/shows` | Admin | Create a show |
+| DELETE | `/api/shows/:id` | Admin | Delete a show (blocked if it has bookings) |
 | POST | `/api/bookings` | User | Book seats |
 | GET | `/api/bookings/mine` | User | My bookings |
 | PATCH | `/api/bookings/:id/cancel` | User | Cancel a booking |
