@@ -1,4 +1,4 @@
-# Backend Development
+# 7 Backend Development
 
 This covers the five backend cards: structure, development and explanation, MongoDB configuration, database connection, and schemas and models.
 
@@ -54,7 +54,7 @@ Then create `server/.env` by copying `server/.env.example`:
 | Model | Key fields | Notes |
 |---|---|---|
 | **User** | name, email (unique), password, role | Password is hashed with bcrypt before saving and is hidden from queries by default (`select: false`). Role is `user` or `admin` |
-| **Movie** | title, description, genres, language, durationMins, rating, posterUrl, releaseDate | Text index on title and genres |
+| **Movie** | title, description, genres, language, durationMins, rating, posterUrl, releaseDate | Searched with plain matching. It has no MongoDB text index, because that treats a `language` field as the text-search language and rejects values like Hindi |
 | **Show** | movie, theatre, city, screen, startTime, price, rows, seatsPerRow, bookedSeats | `allSeats()` builds labels A1, A2, B1 ... from the grid |
 | **Booking** | user, show, seats, totalAmount, status, reference | Reference is generated automatically; status is `confirmed` or `cancelled` |
 

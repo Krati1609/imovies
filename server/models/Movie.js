@@ -16,6 +16,8 @@ const movieSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-movieSchema.index({ title: 'text', genres: 'text' });
+// Note: there is deliberately no MongoDB text index here. A text index treats a field called
+// "language" as the text-search language, and rejects values like "Hindi". Searching is done
+// with plain matching in movieController instead.
 
 module.exports = mongoose.model('Movie', movieSchema);

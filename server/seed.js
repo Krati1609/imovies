@@ -32,6 +32,9 @@ function at(dayOffset, hour) {
 
 async function seed() {
   await connectDB();
+  // Drop any index in the database that the models no longer define
+  // (an older version created a text index that rejects languages like "Hindi").
+  await Movie.syncIndexes();
   await Promise.all([User.deleteMany(), Movie.deleteMany(), Show.deleteMany(), Booking.deleteMany()]);
 
   // Passwords are hashed by the User model's pre-save hook.
