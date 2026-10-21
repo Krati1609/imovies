@@ -1,4 +1,4 @@
-# 7 Backend Development
+# Backend Development
 
 This covers the five backend cards: structure, development and explanation, MongoDB configuration, database connection, and schemas and models.
 

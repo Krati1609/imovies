@@ -149,7 +149,7 @@ export default function AdminMovies() {
           <button className="btn btn-primary" disabled={busy}>
             {busy ? 'Saving...' : editingId ? 'Save changes' : 'Add movie'}
           </button>
-          {editingId && <button type="button" className="btn btn-outline-dark" onClick={reset}>Cancel edit</button>}
+          {editingId && <button type="button" className="btn btn-outline-light" onClick={reset}>Cancel edit</button>}
         </div>
       </form>
 
@@ -169,7 +169,7 @@ export default function AdminMovies() {
                   <td>{m.language}</td>
                   <td>{fmtDuration(m.durationMins)}</td>
                   <td className="text-end text-nowrap">
-                    <button className="btn btn-outline-dark btn-sm me-2" onClick={() => startEdit(m)}>Edit</button>
+                    <button className="btn btn-outline-light btn-sm me-2" onClick={() => startEdit(m)}>Edit</button>
                     <button className="btn btn-outline-danger btn-sm" onClick={() => handleDelete(m)}>Delete</button>
                   </td>
                 </tr>

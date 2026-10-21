@@ -46,8 +46,13 @@ async function api(method, url, body, token) {
   const search = await api('GET', '/movies?search=incep');
   check('search by title works', search.data.length === 1 && search.data[0].title === 'Inception');
 
-  const movie = movies.data[0];
-  const shows = await api('GET', `/movies/${movie._id}/shows`);
+  // Coming-soon movies have no shows, so pick the first movie that does.
+  let movie, shows;
+  for (const m of movies.data) {
+    const res = await api('GET', `/movies/${m._id}/shows`);
+    if (res.status === 200 && res.data.length > 0) { movie = m; shows = res; break; }
+  }
+  if (!movie) { movie = movies.data[0]; shows = await api('GET', `/movies/${movie._id}/shows`); }
   check('movie has upcoming shows', shows.status === 200 && shows.data.length > 0);
   const showId = shows.data[0]._id;
 

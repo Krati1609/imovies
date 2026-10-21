@@ -122,7 +122,7 @@ export default function SeatSelection() {
         />
         <div className="d-flex gap-3 mt-4">
           <Link className="btn btn-primary" to="/my-bookings">View my bookings</Link>
-          <Link className="btn btn-outline-dark" to="/">Book another movie</Link>
+          <Link className="btn btn-outline-light" to="/">Book another movie</Link>
         </div>
       </main>
     )

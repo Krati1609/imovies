@@ -1,4 +1,4 @@
-# 8 Frontend Development
+# Frontend Development
 
 This covers the two frontend cards: structure, and development and explanation. The client is a React single-page app built with Vite, styled with Bootstrap plus a custom stylesheet.
 
@@ -19,7 +19,8 @@ client/
     ├── components/
     │   ├── Navbar.jsx           Links change with login state and role
     │   ├── Poster.jsx           Poster image, or a typographic poster if none
-    │   ├── MovieCard.jsx        Tile on the home page
+    │   ├── Hero.jsx             Rotating banner on the home page
+    │   ├── MovieCard.jsx        Now-showing card and Coming-soon card
     │   ├── SeatMap.jsx          The hall: screen, rows, seats, legend
     │   ├── Ticket.jsx           A booking drawn as a ticket stub
     │   ├── ProtectedRoute.jsx   Login and admin guard
@@ -71,7 +72,7 @@ client/
 
 ## 4. Design choices
 
-The look is built around a cinema hall rather than a generic dark template: ink-navy and paper-white, with velvet red (the colour of cinema seats) as the main colour and brass for selected seats. Movie tiles are square-cornered posters, and when a movie has no image a typographic poster is generated from its title. Bookings use a ticket-stub shape with a tear line.
+The look is a dark cinema theme with a purple accent. The home page opens with a large banner that rotates through the top-rated movies every 6 seconds (it pauses on hover and respects "reduce motion"), followed by a **Now showing** grid with search and filters, and a **Coming soon** row for movies whose release date is in the future. Rounded poster cards carry a purple "Get tickets" button, and when a movie has no image a typographic poster is generated from its title. Bookings use a ticket-stub shape with a tear line.
 
 ## 5. Running it
 
